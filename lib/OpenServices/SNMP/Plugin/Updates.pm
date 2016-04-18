@@ -7,6 +7,8 @@ use warnings FATAL => 'all';
 use NetSNMP::agent qw(:all);
 use NetSNMP::ASN qw(:all);
 
+use XML::XPath;
+
 my $cache = {};
 
 =head1 NAME
@@ -85,14 +87,10 @@ sub check {
             return @packages;
         },
         '/usr/bin/zypper' => sub {
-            my $output = qx/zypper -n -A list-patches/;
-            my @packages;
-            foreach my $line (split /\n/, $output) {
-                if (my ($name, $version) = $line =~ /^\S+\s+\| (\S+)\s+\| (\S+)\s+\| security\s+\| needed$/) {
-                    push @packages, "$name-$version";
-                }
-            }
-            return @packages;
+            my $output = qx/zypper -x -n -A -q list-patches -g security/;
+            my $xp = XML::XPath->new(xml => $output);
+            my $nodeset = $xp->find('/stream/update-status/update-list/update[@category="security" and @pkgmanager="false"]');
+            return map {$_->getAttribute("name")} $nodeset->get_nodelist;
         },
         '/usr/bin/yum' => sub {
             my $output = qx/yum list-security -y/;
