@@ -1,5 +1,8 @@
 Revision history for OpenServices-SNMP-Plugin-Updates
 
+0.05    2016-04-18
+        Use parseable XML output from zypper to support SLES 12 and SLES 11 at the same time.
+
 0.04    2014-11-03
         Do not restrict package prefixes to RHEA, also recognize RHSA as pending updates.
 
