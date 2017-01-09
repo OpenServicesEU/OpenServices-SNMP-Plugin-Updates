@@ -17,11 +17,11 @@ OpenServices::SNMP::Plugin::Updates - Expose pending security updates over SNMP
 
 =head1 VERSION
 
-Version 0.0.0
+Version 0.1.0
 
 =cut
 
-our $VERSION = '0.0.0';
+our $VERSION = '0.1.0';
 
 =head1 BASE OID
 
