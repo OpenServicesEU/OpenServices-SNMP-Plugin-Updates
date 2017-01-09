@@ -1,5 +1,8 @@
 Revision history for OpenServices-SNMP-Plugin-Updates
 
+0.1.1   2017-01-09
+        Update MANIFEST.
+
 0.1.0   2017-01-09
         Fix parsing of security updates on Oracle Enterprise Linux.
 
