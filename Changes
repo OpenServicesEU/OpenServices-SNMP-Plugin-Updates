@@ -1,5 +1,8 @@
 Revision history for OpenServices-SNMP-Plugin-Updates
 
+0.1.0   2017-01-09
+        Fix parsing of security updates on Oracle Enterprise Linux.
+
 0.05    2016-04-18
         Use parseable XML output from zypper to support SLES 12 and SLES 11 at the same time.
 
