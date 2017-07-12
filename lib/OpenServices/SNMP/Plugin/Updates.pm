@@ -80,7 +80,7 @@ sub check {
             my $output = qx/apt-get upgrade -s/;
             my @packages;
             foreach my $line (split /\n/, $output) {
-                if (my ($name, $version) = $line =~ /^Inst (\S+) \[(\S+)\] \(\S+ Debian:security \[\S+\]\)/) {
+                if (my ($name, $version) = $line =~ /^Inst (\S+) \[\S+\] \((\S+) (?:Debian:security|Debian-Security:\d+\/\w+) \[\S+\]\)/) {
                     push @packages, "$name-$version";
                 }
             }
