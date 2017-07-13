@@ -119,6 +119,7 @@ sub check {
             }
             foreach (@packages) {
                 $updates->{$counter} = $_;
+                print STDERR "Pending security update: $_\n";
                 $counter++;
             }
         }
