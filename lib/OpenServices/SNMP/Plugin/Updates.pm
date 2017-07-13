@@ -136,12 +136,13 @@ sub handler {
     my $request;
 
     my $updates = check();
+    my $size = keys %$updates;
 
     for($request = $requests; $request; $request = $request->next()) {
         my $oid = $request->getOID();
         if ($request_info->getMode() == MODE_GET) {
             if ($oid == $BASEOID) {
-                $request->setValue(ASN_INTEGER, scalar keys %$updates);
+                $request->setValue(ASN_INTEGER, $size);
             } else {
                 foreach my $package_oid (sort {$a <=> $b} keys %$updates) {
                     if ($oid == $BASEOID + ".$package_oid") {
@@ -152,7 +153,7 @@ sub handler {
         } elsif ($request_info->getMode() == MODE_GETNEXT) {
             if ($oid < $BASEOID) {
                 $request->setOID($BASEOID);
-                $request->setValue(ASN_INTEGER, scalar keys %$updates);
+                $request->setValue(ASN_INTEGER, $size);
             } else {
                 foreach my $package_oid (sort {$a <=> $b} keys %$updates) {
                     if ($oid < $BASEOID + ".$package_oid") {
