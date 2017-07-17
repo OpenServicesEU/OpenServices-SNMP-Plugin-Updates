@@ -96,7 +96,7 @@ sub check {
             my $output = qx/yum list-security -y/;
             my @packages;
             foreach my $line (split /\n/, $output) {
-                if (my ($name) = $line =~ /^\w+-\d+[:-]\d+ \S+ (\S+)$/) {
+                if (my ($name) = $line =~ /^[\w-]+ +(?:Important\/Sec\.|security) +(\S+)$/) {
                     push @packages, $name;
                 }
             }
