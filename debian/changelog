@@ -1,0 +1,5 @@
+libopenservices-snmp-plugin-updates-perl (1.0.4-1) UNRELEASED; urgency=low
+
+  * Initial release.
+
+ -- Michael Fladischer <fladi@debian.org>  Fri, 2 Mar 2018 12:41:33 +0100
